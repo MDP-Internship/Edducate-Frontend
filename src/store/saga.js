@@ -3,7 +3,7 @@ import {
     take,
     all,
     put,
-    select
+    // select
 } from 'redux-saga/effects'
 import { request } from "../commons/utils"
 import { MAIN_URL } from "../commons/constant"
@@ -12,16 +12,18 @@ import * as constants from "./constants"
 import * as actions from './actions';
 
 // const getToken = (state) => state.token
-
 function* doLogin(email, password) {
 
     const userInfoJson = JSON.stringify({ email, password })
     const result = yield call(request, MAIN_URL, "POST", userInfoJson);
     console.log(result);
+    debugger;
     if (result !== 'invalid') {
+        debugger;
         if (result.type) {
-
+            debugger;
             yield put(actions.setLogin(false));
+            debugger;
             yield put(actions.setToken(result.token));
             if (window.location.hash === '#/MyAccounts') {
                 console.log('istek atıldı');

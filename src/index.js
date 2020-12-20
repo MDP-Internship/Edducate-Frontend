@@ -10,6 +10,7 @@ import { compose, createStore, applyMiddleware } from 'redux';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import createSagaMiddleware from 'redux-saga';
 
+import logger from 'redux-logger'
 
 import reducers from './store/reducer'
 import sagas from './store/saga'
@@ -34,7 +35,8 @@ export const store = createStore(
 
   persistedReducer,
   composeEnhancer(
-    applyMiddleware(sagaMiddleware)
+    applyMiddleware(sagaMiddleware),
+    applyMiddleware(logger)
   )
 
 );

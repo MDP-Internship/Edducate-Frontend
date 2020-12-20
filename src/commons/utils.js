@@ -17,16 +17,18 @@ export const request = async (url, method, data = false, authorization = "") => 
     }
 
     if (data) {
+        
         options.body = data;
     }
-
+    debugger;
     await ShowLoadingInterceptor(store, true);
-
+    debugger;
     return fetch(url, options).then(response => {
+        debugger;
         ShowLoadingInterceptor(store, false);
         //reponse 200 dışındaysa
         if (!response.ok) {
-
+            debugger;
             if (response.status === 401) {
                 //Yetkisini engellemek için 401=Yetkisiz giriş
                 TokenInvalidRouter(store, true)
@@ -42,6 +44,7 @@ export const request = async (url, method, data = false, authorization = "") => 
         .then(response => {
             response.json()
             ShowLoadingInterceptor(store, false)
+            debugger;
         })
         .catch(() => "invalid", ShowLoadingInterceptor(store, false))
 }
