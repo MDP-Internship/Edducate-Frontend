@@ -29,8 +29,9 @@ class UserTables extends Component {
                     <tr>
                         <th>#</th>
                         <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>surname</th>
+                        <th>Surname</th>
+                        <th>Mail</th>
+                        <th>RolId</th>
                     </tr>
                 </thead>
                 <tbody>

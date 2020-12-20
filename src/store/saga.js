@@ -17,12 +17,10 @@ function* doLogin(email, password) {
     const userInfoJson = JSON.stringify({ email, password })
     const result = yield call(request, LOGIN_URL, "POST", userInfoJson);
     if (result !== 'invalid') {
-        if (result.status === "ok") {
+        if (result.type) {
             yield put(actions.setLogin(false));
             yield put(actions.setToken(result.token));
-            if (window.location.hash === '#/Home') {
-                console.log('istek atıldı');
-            }
+            
         }
         else {
             console.log("");
@@ -44,11 +42,13 @@ function* register(value) {
 
     const userInfoJson = JSON.stringify(value)
     const result = yield call(request, MAIN_URL, "POST", userInfoJson);
+    debugger;
     if (result !== 'invalid') {
-        if (result.status === "ok") {
+        if (result.type) {
+            debugger;
             yield put(actions.setLogin(false));
             yield put(actions.setToken(result.token));
-
+            
         }
         else {
             console.log("");
