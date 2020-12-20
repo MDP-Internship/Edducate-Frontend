@@ -39,11 +39,7 @@ export const request = async (url, method, data = false, authorization = "") => 
 
         return response.json()
     })
-        .then(response => {
-            console.log(response)
-            debugger;
-            return
-        })
+        .then(response => response)
         .catch(() => "invalid", ShowLoadingInterceptor(store, false))
 }
 

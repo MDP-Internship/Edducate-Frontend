@@ -21,8 +21,8 @@ class UserTables extends Component {
     }
 
     render() {
+        const users = this.props.users;
 
-        console.log(this.props.users);
         return (
             <Table>
                 <thead>
@@ -30,28 +30,21 @@ class UserTables extends Component {
                         <th>#</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Username</th>
+                        <th>surname</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                    {
+                        users.map(user =>
+                            <tr>
+                                <th scope="row">{user.id}</th>
+                                <td>{user.name}</td>
+                                <td>{user.surname}</td>
+                                <td>{user.email}</td>
+                                <td>{user.roleId}</td>
+                            </tr>)
+                    }
+
                 </tbody>
             </Table>
 

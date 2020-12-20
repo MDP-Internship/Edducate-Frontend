@@ -3,7 +3,7 @@ const initialState = {
     login: true, // true normalde
     loading: false,
     token: '',
-    users: []
+    users: ["fatih"]
 };
 
 export default function store(state = initialState, action) {

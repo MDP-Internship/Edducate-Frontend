@@ -66,8 +66,8 @@ function* register(value) {
 
 function* getAllUser() {
     const result = yield call(request, `${MAIN_URL}/user/getAll`, 'GET', false, yield select(getToken));
-
-    yield put(actions.setAllUser(result.data));
+ 
+    yield put(actions.setAllUser(result));
 }
 
 
