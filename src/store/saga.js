@@ -16,30 +16,23 @@ function* doLogin(email, password) {
 
     const userInfoJson = JSON.stringify({ email, password })
     const result = yield call(request, MAIN_URL, "POST", userInfoJson);
-    console.log(result);
-    debugger;
     if (result !== 'invalid') {
-        debugger;
-        if (result.type) {
-            debugger;
+        if (result.status === "ok") {
             yield put(actions.setLogin(false));
-            debugger;
             yield put(actions.setToken(result.token));
-            if (window.location.hash === '#/MyAccounts') {
+            if (window.location.hash === '#/Home') {
                 console.log('istek atıldı');
-
             }
-
-        } else {
-            console.log('girdi');
+        }
+        else {
+            console.log("");
 
 
             // yield put(actions.setToast(true, result.message, 'warning'));
         }
-    } else {
-        console.log('girdi');
-
-
+    }
+    else {
+        // request catch düştüğünde çalışan yer
         // yield put(actions.setToast(true, 'Sunucu ile bağlantı kurulamadı!', 'warning'));
     }
 
