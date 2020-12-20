@@ -2,6 +2,9 @@ import * as constants from './constants'
 // SET_LAYOUT
 export const setLogin = (value) => ({ type: constants.SET_LOGIN, value });
 
+// SER_REGİSTER
+export const setRegister = (value) => ({ type: constants.SET_REGISTER, value });
+
 // SET_LOADING
 export const setLoading = (value) => ({ type: constants.SET_LOADING, value });
 
@@ -10,6 +13,11 @@ export const doLogin = (email, password) => ({ type: constants.DO_LOGIN, email, 
 
 // SET_TOKEN
 export const setToken = (value) => ({ type: constants.SET_TOKEN, value });
+
+
+export const getAllUser = () => ({ type: constants.GET_ALL_USER });
+
+export const setAllUser = (value) => ({ type: constants.SET_ALL_USER, value });
 
 // SET_TOAST
 // export const setToast = (value, message, variant) => ({

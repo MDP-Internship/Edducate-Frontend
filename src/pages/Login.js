@@ -56,7 +56,7 @@ class Login extends React.Component {
             <Container className="">
                 <Row className="">
                     <Col md="6" className="mx-auto bg-white shadow-lg p-3 mt-5 bg-white rounded">
-                        <h3>Login</h3>
+                        <h3>Giriş Yap</h3>
                         <AvForm
                             onValidSubmit={this.handleValidSubmit}
                             onInvalidSubmit={this.handleInvalidSubmit}
@@ -98,7 +98,7 @@ class Login extends React.Component {
                                     }
                                 }}
                             />
-                            <Button id="submit" onClick={() => this.doLogin()}>Submit</Button>
+                            <Button id="submit" onClick={() => this.doLogin()}>Giriş Yap</Button>
                         </AvForm>
                     </Col>
                 </Row>
@@ -113,13 +113,13 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = dispatch => (
     (
-      bindActionCreators({
-        doLogin,
-        // closeToast,
-        // setMenuVisible,
-      }, dispatch)
+        bindActionCreators({
+            doLogin,
+            // closeToast,
+            // setMenuVisible,
+        }, dispatch)
     )
-  );
+);
 //???
 Login.propTypes = {
     loginState: PropTypes.bool.isRequired,

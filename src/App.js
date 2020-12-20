@@ -11,9 +11,6 @@ import { selectLogin } from './store/selectors';
 
 class App extends Component {
 
-
-
-
   componentDidMount() {
     console.log(this.props.loginState)
     window.location.hash = this.isLogin(this.props.loginState)
@@ -33,12 +30,12 @@ class App extends Component {
 
 App.propTypes = {
   loginState: PropTypes.bool.isRequired,
-  open: PropTypes.bool.isRequired,
-  message: PropTypes.string.isRequired,
-  variant: PropTypes.string.isRequired,
-  closeToast: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-  getInit: PropTypes.func.isRequired,
+  // open: PropTypes.bool.isRequired,
+  // message: PropTypes.string.isRequired,
+  // variant: PropTypes.string.isRequired,
+  // closeToast: PropTypes.func.isRequired,
+  // loading: PropTypes.bool.isRequired,
+  // getInit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

@@ -16,3 +16,8 @@ export const selectLogin = () => createSelector(
     domain,
     (substate) => substate.login,
 );
+
+export const selectUsers = () => createSelector(
+    domain,
+    (substate) => substate.users,
+);

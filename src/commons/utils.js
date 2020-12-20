@@ -37,10 +37,13 @@ export const request = async (url, method, data = false, authorization = "") => 
             throw Error(response.statusText);
         }
 
-
         return response.json()
     })
-        .then(response => response)
+        .then(response => {
+            console.log(response)
+            debugger;
+            return
+        })
         .catch(() => "invalid", ShowLoadingInterceptor(store, false))
 }
 
