@@ -11,9 +11,15 @@ import { selectLogin } from './store/selectors';
 
 class App extends Component {
 
+
+
+
   componentDidMount() {
-    window.location.hash = "#/register"
+    console.log(this.props.loginState)
+    window.location.hash = this.isLogin(this.props.loginState)
   }
+
+  isLogin = (isLoginBool) => (isLoginBool ? "Login" : "");
 
   render() {
     return (
