@@ -20,7 +20,7 @@ function* doLogin(email, password) {
         if (result.type) {
             yield put(actions.setLogin(false));
             yield put(actions.setToken(result.token));
-            
+
         }
         else {
             console.log("");
@@ -48,7 +48,7 @@ function* register(value) {
             debugger;
             yield put(actions.setLogin(false));
             yield put(actions.setToken(result.token));
-            
+
         }
         else {
             console.log("");
@@ -62,13 +62,18 @@ function* register(value) {
 }
 
 
-
-
 function* getAllUser() {
     const result = yield call(request, `${MAIN_URL}/user/getAll`, 'GET', false, yield select(getToken));
- 
+
     yield put(actions.setAllUser(result));
 }
+
+function* logOutUser() {
+    localStorage.clear();
+    yield put(actions.setLogin(true));
+    yield put(actions.logOutUser());
+}
+
 
 
 //watcher
@@ -96,10 +101,21 @@ function* getAllUserWatcher() {
     }
 }
 
+
+function* logOutUserWatcher() {
+
+    while (true) {
+        const action = yield take(constants.LOG_OUT);
+        yield call(logOutUser, action);
+
+    }
+}
+
 export default function* rootSaga() {
     yield all([
         doLoginWatcher(),
         registerWatcher(),
-        getAllUserWatcher()
+        getAllUserWatcher(),
+        logOutUserWatcher()
     ]);
 }

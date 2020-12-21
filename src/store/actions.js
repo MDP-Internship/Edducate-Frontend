@@ -19,6 +19,8 @@ export const getAllUser = () => ({ type: constants.GET_ALL_USER });
 
 export const setAllUser = (value) => ({ type: constants.SET_ALL_USER, value });
 
+export const logOutUser = () => ({ type: constants.LOG_OUT });
+
 // SET_TOAST
 // export const setToast = (value, message, variant) => ({
 //     type: constants.SET_TOAST, value, message, variant,

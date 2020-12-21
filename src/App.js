@@ -12,7 +12,10 @@ import { selectLogin } from './store/selectors';
 class App extends Component {
 
   componentDidMount() {
-    console.log(this.props.loginState)
+    window.location.hash = this.isLogin(this.props.loginState)
+  }
+
+  componentDidUpdate() {
     window.location.hash = this.isLogin(this.props.loginState)
   }
 

@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, { Component } from 'react';
 import {
     Collapse,
     Navbar,
@@ -11,6 +11,14 @@ import {
 } from 'reactstrap';
 
 
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { createStructuredSelector } from 'reselect'
+import PropTypes from "prop-types"
+
+import { logOutUser } from "../store/actions"
+import { selectLogin } from "../store/selectors"
+
 class Header extends Component {
 
     constructor(props) {
@@ -21,7 +29,15 @@ class Header extends Component {
         }
     }
 
+    componentDidUpdate() {
+        window.location.hash = this.isLogin(this.props.login)
+      }
+    
+      isLogin = (isLoginBool) => (isLoginBool ? "Login" : "");
+
     toggle = () => this.setState({ isOpen: !this.state.isOpen })
+
+    logOut = () => this.props.logOutUser()
 
     render() {
         return (
@@ -32,13 +48,13 @@ class Header extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="mr-auto" navbar>
                             <NavItem>
-                                <NavLink href="/components/">Anasayfa</NavLink>
+                                <NavLink>Anasayfa</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/components/">Admin</NavLink>
+                                <NavLink>Admin</NavLink>
                             </NavItem>
                         </Nav>
-                        <NavLink href="/components/">Login</NavLink>
+                        <NavLink onClick={this.logOut} >Oturum Kapat</NavLink>
                     </Collapse>
                 </Container>
             </Navbar>
@@ -46,5 +62,18 @@ class Header extends Component {
     }
 }
 
+const mapStateToProps = () => createStructuredSelector({
+    login: selectLogin()
+})
 
-export default Header;
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    logOutUser
+}, dispatch)
+
+// Header.prototype = {
+//     login: PropTypes.bool.isRequired,
+//     logOutUser: PropTypes.func.isRequired
+// }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
