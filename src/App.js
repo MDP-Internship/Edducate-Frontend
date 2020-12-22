@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Routes from './commons/Routes'
-import { HashRouter } from 'react-router-dom';
+import Routes from "./Routes"
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -11,23 +10,12 @@ import { selectLogin } from './store/selectors';
 
 class App extends Component {
 
-  componentDidMount() {
-    window.location.hash = this.isLogin(this.props.loginState)
-  }
-
-  componentDidUpdate() {
-    window.location.hash = this.isLogin(this.props.loginState)
-  }
-
-  isLogin = (isLoginBool) => (isLoginBool ? "Login" : "");
-
   render() {
     return (
-      <HashRouter>
-        <Routes></Routes>
-      </HashRouter>
+      <Routes></Routes>
     )
   }
+  
 }
 
 

@@ -9,7 +9,7 @@ import {
     NavLink,
     Container
 } from 'reactstrap';
-
+import { Link } from "react-router-dom"
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -31,13 +31,15 @@ class Header extends Component {
 
     componentDidUpdate() {
         window.location.hash = this.isLogin(this.props.login)
-      }
-    
-      isLogin = (isLoginBool) => (isLoginBool ? "Login" : "");
+    }
+
+    isLogin = (isLoginBool) => (isLoginBool ? "Login" : "");
 
     toggle = () => this.setState({ isOpen: !this.state.isOpen })
 
     logOut = () => this.props.logOutUser()
+
+    loginButton = () => false
 
     render() {
         return (
@@ -47,14 +49,20 @@ class Header extends Component {
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="mr-auto" navbar>
-                            <NavItem>
-                                <NavLink>Anasayfa</NavLink>
+                            <NavItem className="mr-3">
+                                <Link to="/">Anasayfa</Link>
                             </NavItem>
                             <NavItem>
-                                <NavLink>Admin</NavLink>
+                                <Link to="/Admin" >Admin</Link>
                             </NavItem>
                         </Nav>
-                        <NavLink onClick={this.logOut} >Oturum Kapat</NavLink>
+                        {this.loginButton() ?
+                            <NavLink onClick={this.logOut} >Çıkış Yap</NavLink> :
+                            <Nav>
+                                <Link className="mr-3" to="/Login">Giriş Yap</Link>
+                                <Link to="/Register">Kayıt Ol</Link>
+                            </Nav>
+                        }
                     </Collapse>
                 </Container>
             </Navbar>
