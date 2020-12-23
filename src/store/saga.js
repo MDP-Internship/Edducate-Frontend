@@ -74,8 +74,7 @@ function* getAllUser() {
 
 function* logOutUser() {
 
-    localStorage.removeItem('persist:root')
-
+    localStorage.clear();
     window.location.pathname = "/"
     yield put(actions.setLogin(true));
     yield put(actions.logOutUser());
