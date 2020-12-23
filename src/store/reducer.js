@@ -50,11 +50,7 @@ export default function store(state = initialState, action) {
                 roleId: action.roleId,
             }
         case constants.LOG_OUT:
-            return {
-                ...state,
-            }
-
-
+            return {}
         default:
             return state;
     }
