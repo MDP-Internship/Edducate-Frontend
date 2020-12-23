@@ -10,6 +10,8 @@ import { MAIN_URL, LOGIN_URL } from "../commons/constant"
 
 import * as constants from "./constants"
 import * as actions from './actions';
+import { useHistory } from "react-router-dom"
+import jwtDecode from "jwt-decode"
 
 const getToken = (state) => state.token
 function* doLogin(email, password) {
@@ -18,8 +20,12 @@ function* doLogin(email, password) {
     const result = yield call(request, LOGIN_URL, "POST", userInfoJson);
     if (result !== 'invalid') {
         if (result.type) {
+
+            const { id, name, email, roleId } = jwtDecode(result.token)
+
             yield put(actions.setLogin(false));
             yield put(actions.setToken(result.token));
+            yield put(actions.decodeToken(id, name, email, roleId));
 
         }
         else {
@@ -42,16 +48,14 @@ function* register(value) {
 
     const userInfoJson = JSON.stringify(value)
     const result = yield call(request, MAIN_URL, "POST", userInfoJson);
-    debugger;
+
     if (result !== 'invalid') {
         if (result.type) {
-            debugger;
+            window.location.pathname = "/app"
             yield put(actions.setLogin(false));
             yield put(actions.setToken(result.token));
-
         }
         else {
-            console.log("");
             // yield put(actions.setToast(true, result.message, 'warning'));
         }
     }
@@ -69,7 +73,10 @@ function* getAllUser() {
 }
 
 function* logOutUser() {
-    localStorage.clear();
+
+    localStorage.removeItem('persist:root')
+
+    window.location.pathname = "/"
     yield put(actions.setLogin(true));
     yield put(actions.logOutUser());
 }

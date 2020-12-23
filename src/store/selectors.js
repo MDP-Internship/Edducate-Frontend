@@ -21,3 +21,8 @@ export const selectUsers = () => createSelector(
     domain,
     (substate) => substate.users,
 );
+
+export const selectDecode = () => createSelector(
+    domain,
+    (substate) => { return { id: substate.id, name: substate.name, email: substate.email, roleId: substate.roleId } },
+);

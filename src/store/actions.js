@@ -19,7 +19,9 @@ export const getAllUser = () => ({ type: constants.GET_ALL_USER });
 
 export const setAllUser = (value) => ({ type: constants.SET_ALL_USER, value });
 
-export const logOutUser = () => ({ type: constants.LOG_OUT });
+export const logOutUser = () => ({ type: constants.LOG_OUT});
+
+export const decodeToken = (id, name, email, roleId) => ({ type: constants.DECODE_TOKEN, id, name, email, roleId })
 
 // SET_TOAST
 // export const setToast = (value, message, variant) => ({

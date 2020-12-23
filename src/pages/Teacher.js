@@ -5,7 +5,7 @@ export default class Teacher extends Component {
     render() {
         return (
             <div>
-                <Header />
+
 
                 Öğretmen
             </div>

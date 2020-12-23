@@ -20,7 +20,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["token", "login"]
+  whitelist: ["roleId", "email", "id", "name", "login","token"]
 }
 
 //localstorage middleware redux

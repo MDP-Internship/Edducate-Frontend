@@ -54,7 +54,7 @@ class Login extends React.Component {
     render() {
         return (
             <Fragment>
-                <Header />
+                
                 <Container className="">
                     <Row className="">
                         <Col md="6" className="mx-auto bg-white shadow-lg p-3 mt-5 bg-white rounded">
