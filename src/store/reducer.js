@@ -3,7 +3,11 @@ const initialState = {
     login: true, // true normalde
     loading: false,
     token: '',
-    users: ["fatih"]
+    id: "",
+    name: "",
+    email: "",
+    roleId: "",
+    users: []
 };
 
 export default function store(state = initialState, action) {
@@ -37,7 +41,16 @@ export default function store(state = initialState, action) {
                 users: action.value
             }
 
-
+        case constants.DECODE_TOKEN:
+            return {
+                ...state,
+                id: action.id,
+                name: action.name,
+                email: action.email,
+                roleId: action.roleId,
+            }
+        case constants.LOG_OUT:
+            return {}
         default:
             return state;
     }

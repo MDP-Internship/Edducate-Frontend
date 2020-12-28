@@ -5,11 +5,9 @@ import {
     NavbarToggler,
     NavbarBrand,
     Nav,
-    NavItem,
-    NavLink,
-    Container
+    Container,
+    Button
 } from 'reactstrap';
-
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -18,6 +16,9 @@ import PropTypes from "prop-types"
 
 import { logOutUser } from "../store/actions"
 import { selectLogin } from "../store/selectors"
+import { isLoggedIn } from "../commons/utils"
+import { Link, useHistory } from "react-router-dom";
+
 
 class Header extends Component {
 
@@ -25,19 +26,31 @@ class Header extends Component {
         super(props)
         this.state = {
             isOpen: false,
-            setIsOpen: false
+            setIsOpen: false,
         }
+
+
     }
 
     componentDidUpdate() {
-        window.location.hash = this.isLogin(this.props.login)
-      }
-    
-      isLogin = (isLoginBool) => (isLoginBool ? "Login" : "");
+        // window.location.hash = this.isLogin(this.props.login)
+
+    }
+
+   
+
+    isLogin = (isLoginBool) => (isLoginBool ? "Login" : "");
 
     toggle = () => this.setState({ isOpen: !this.state.isOpen })
 
     logOut = () => this.props.logOutUser()
+
+    loginButton = () => false
+
+    
+
+
+
 
     render() {
         return (
@@ -47,14 +60,20 @@ class Header extends Component {
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="mr-auto" navbar>
-                            <NavItem>
-                                <NavLink>Anasayfa</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink>Admin</NavLink>
-                            </NavItem>
+                            {this.props.routes.map(({ path, title }) => (
+                                <Link  key={path} className="w3-bar-item mx-3" to={`${this.props.prefix}${path}`}>
+                                    {title}
+                                </Link>
+                            ))}
+                            {isLoggedIn() && <Button onClick={this.handleLogout}>Logout</Button>}
                         </Nav>
-                        <NavLink onClick={this.logOut} >Oturum Kapat</NavLink>
+                        {!this.props.login ?
+                            <Link onClick={this.logOut} >Çıkış Yap</Link> :
+                            <Nav>
+                                <Link className="mr-3" to="/Login">Giriş Yap</Link>
+                                <Link to="/Register">Kayıt Ol</Link>
+                            </Nav>
+                        }
                     </Collapse>
                 </Container>
             </Navbar>

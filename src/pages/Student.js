@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import Header from '../components/Header'
-import UserTables from '../components/UserTables'
 
-export default class Admin extends Component {
+export default class Student extends Component {
     render() {
         return (
             <div>
 
-                <UserTables></UserTables>
+                Öğrenci
             </div>
         )
     }

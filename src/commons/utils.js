@@ -1,6 +1,9 @@
 import { ShowLoadingInterceptor, TokenInvalidRouter } from './helper'
 import { store } from '../index'
 
+
+
+
 export const request = async (url, method, data = false, authorization = "") => {
 
     const headers = {
@@ -31,7 +34,7 @@ export const request = async (url, method, data = false, authorization = "") => 
                 TokenInvalidRouter(store, true)
             }
             else if (response.status === 200) {
-                TokenInvalidRouter(store, false)
+                // TokenInvalidRouter(store, false)
             }
 
             throw Error(response.statusText);
@@ -47,7 +50,7 @@ export const request = async (url, method, data = false, authorization = "") => 
 //bellekte bulunan token ile giriş yapıyor
 
 export const filesRequest = (url, method, data = "false", files) => {
-
+debugger;
     const headers = {
         auth: localStorage.getItem("token")
     }
@@ -78,3 +81,15 @@ export const filesRequest = (url, method, data = "false", files) => {
         .catch(() => "invalid")
 
 }
+
+
+export function isLoggedIn() {
+	/*
+		* Note:
+		*  This app assume if local storage have roles it means
+		*  user is authenticated you can update this logic as per your app.
+	*/
+	return false
+}
+
+

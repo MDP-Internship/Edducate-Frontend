@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import { Component, Fragment } from 'react'
 import Header from '../components/Header'
 import UserTables from '../components/UserTables'
 export default class Home extends Component {
     render() {
         return (
-            <div>
-                <Header></Header>
-                <UserTables></UserTables>
-            </div>
+            <Fragment>
+
+                AnaSayfa
+            </Fragment>
         )
     }
 }

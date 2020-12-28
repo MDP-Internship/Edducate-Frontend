@@ -12,3 +12,4 @@ export const SET_ALL_USER = 'SET_ALL_USER';
 // Kullanıcı adı ve şifre ile oturum açma
 export const SET_TOKEN = 'SET_TOKEN';
 export const SET_SUGGESTION_DIALOG_OPEN = 'SET_SUGGESTION_DIALOG_OPEN';
+export const DECODE_TOKEN = "DECODE_TOKEN";
