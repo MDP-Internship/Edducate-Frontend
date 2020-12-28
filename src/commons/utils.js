@@ -34,7 +34,7 @@ export const request = async (url, method, data = false, authorization = "") => 
                 TokenInvalidRouter(store, true)
             }
             else if (response.status === 200) {
-                TokenInvalidRouter(store, false)
+                // TokenInvalidRouter(store, false)
             }
 
             throw Error(response.statusText);
@@ -50,7 +50,7 @@ export const request = async (url, method, data = false, authorization = "") => 
 //bellekte bulunan token ile giriş yapıyor
 
 export const filesRequest = (url, method, data = "false", files) => {
-
+debugger;
     const headers = {
         auth: localStorage.getItem("token")
     }

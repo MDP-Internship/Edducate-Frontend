@@ -10,7 +10,7 @@ import { MAIN_URL, LOGIN_URL } from "../commons/constant"
 
 import * as constants from "./constants"
 import * as actions from './actions';
-import { useHistory } from "react-router-dom"
+// import { useHistory } from "react-router-dom"
 import jwtDecode from "jwt-decode"
 
 const getToken = (state) => state.token
@@ -23,10 +23,9 @@ function* doLogin(email, password) {
 
             const { id, name, email, roleId } = jwtDecode(result.token)
 
-            yield put(actions.setLogin(false));
             yield put(actions.setToken(result.token));
             yield put(actions.decodeToken(id, name, email, roleId));
-
+            yield put(actions.setLogin(false));
         }
         else {
             console.log("");

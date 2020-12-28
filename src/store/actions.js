@@ -23,6 +23,7 @@ export const logOutUser = () => ({ type: constants.LOG_OUT});
 
 export const decodeToken = (id, name, email, roleId) => ({ type: constants.DECODE_TOKEN, id, name, email, roleId })
 
+
 // SET_TOAST
 // export const setToast = (value, message, variant) => ({
 //     type: constants.SET_TOAST, value, message, variant,
